@@ -6,37 +6,27 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
+    project: './tsconfig.json',
   },
-  plugins: ['prettier'],
-  rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true,
-        trailingComma: 'all',
-        jsxBracketSameLine: false,
-        parser: 'typescript',
-      },
-    ],
-    'react/prop-types': [
-      1,
-      {
-        ignore: ['context', 'tracking'],
-      },
-    ],
-  },
+  plugins: ['prettier', '@typescript-eslint'],
   settings: {
     react: {
       version: 'detect',
     },
+  },
+  rules: {
+    // disable the rule for all files
+    '@typescript-eslint/explicit-function-return-type': 'off',
   },
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
       rules: {
         'react/prop-types': 'off',
+        '@typescript-eslint/explicit-function-return-type': [
+          'error',
+          { allowTypedFunctionExpressions: true },
+        ],
       },
     },
   ],
