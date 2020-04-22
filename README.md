@@ -8,4 +8,6 @@
 
 #### To run tests `yarn test`
 
+#### To run tests in watch mode `yarn test:watch`
+
 #### To run the linter `yarn lint`
