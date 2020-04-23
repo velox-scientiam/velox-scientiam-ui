@@ -23,8 +23,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "CI=true react-scripts test",
-    "test:watch": "react-scripts test",
+    "test": "react-scripts test",
+    "test:run": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx src --color",
     "format": "pretty-quick"

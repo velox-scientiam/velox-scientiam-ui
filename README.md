@@ -6,8 +6,8 @@
 
 #### To start the project `yarn start`
 
-#### To run tests `yarn test`
+#### To run tests and watch`yarn test`
 
-#### To run tests in watch mode `yarn test:watch`
+#### To run tests once withouth watch mode `yarn test:run`
 
 #### To run the linter `yarn lint`
