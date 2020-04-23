@@ -16,17 +16,16 @@ it('renders without crashing', () => {
   );
 });
 
-it('should render all links in navigation', () => {
-  const { getByText } = render(
-    <Router>
-      <Navigation />
-    </Router>,
-  );
-  const homeButton = getByText('Home');
-  const loginButton = getByText('Login');
-  const signupButton = getByText('Login');
+it.each(['Home', 'Login', 'Signup'])(
+  'should render %s link in navigation',
+  (linkText: string) => {
+    const { getByText } = render(
+      <Router>
+        <Navigation />
+      </Router>,
+    );
+    const link = getByText(linkText);
 
-  expect(homeButton).toBeInTheDocument();
-  expect(loginButton).toBeInTheDocument();
-  expect(signupButton).toBeInTheDocument();
-});
+    expect(link).toBeInTheDocument();
+  },
+);
