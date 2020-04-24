@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-import * as shortid from 'shortid';
+import { generate as generateId } from 'shortid';
 
 import Button from '@material-ui/core/Button';
 
@@ -16,7 +16,7 @@ const RouterLinks: FunctionComponent<RouterLinksProps> = ({ links }) => {
       {links.map((link) => (
         <Button
           color="inherit"
-          key={'router-link' + shortid.generate()}
+          key={'router-link-' + generateId()}
           component={Link}
           to={link.target}
         >
