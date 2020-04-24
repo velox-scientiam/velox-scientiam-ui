@@ -11,7 +11,7 @@ const ChangeBgColor: FunctionComponent = () => {
 
   const changeBackground = (
     event: React.ChangeEvent<HTMLInputElement>,
-  ): any => {
+  ): void => {
     setDarkMode(event.target.checked);
   };
 
