@@ -13,14 +13,14 @@ interface RouterLinksProps {
 const RouterLinks: FunctionComponent<RouterLinksProps> = ({ links }) => {
   return (
     <Fragment>
-      {links.map((link) => (
+      {links.map(({ name, target }) => (
         <Button
           color="inherit"
           key={'router-link-' + generateId()}
           component={Link}
-          to={link.target}
+          to={target}
         >
-          {link.name}
+          {name}
         </Button>
       ))}
     </Fragment>
