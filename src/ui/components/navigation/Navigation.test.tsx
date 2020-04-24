@@ -1,31 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { render } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import Navigation from './Navigation';
 
-import { BrowserRouter as Router } from 'react-router-dom';
+const navInRouter = (): React.ReactElement => {
+  return (
+    <Router>
+      <Navigation />
+    </Router>
+  );
+};
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
 
-  ReactDOM.render(
-    <Router>
-      <Navigation />
-    </Router>,
-    div,
-  );
+  ReactDOM.render(navInRouter(), div);
 });
-
-it.each(['Home', 'Login', 'Signup'])(
-  'should render %s link in navigation',
-  (linkText: string) => {
-    const { getByText } = render(
-      <Router>
-        <Navigation />
-      </Router>,
-    );
-    const link = getByText(linkText);
-
-    expect(link).toBeInTheDocument();
-  },
-);
