@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { generate as generateId } from 'shortid';
 
@@ -12,7 +12,7 @@ interface RouterLinksProps {
 
 const RouterLinks: FunctionComponent<RouterLinksProps> = ({ links }) => {
   return (
-    <React.Fragment>
+    <Fragment>
       {links.map((link) => (
         <Button
           color="inherit"
@@ -23,7 +23,7 @@ const RouterLinks: FunctionComponent<RouterLinksProps> = ({ links }) => {
           {link.name}
         </Button>
       ))}
-    </React.Fragment>
+    </Fragment>
   );
 };
 
