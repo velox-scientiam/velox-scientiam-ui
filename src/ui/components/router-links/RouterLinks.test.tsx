@@ -21,7 +21,7 @@ const MOCK_LINKS: NavigationLink[] = [
   },
 ];
 
-const printLinksInRouter = (links = MOCK_LINKS): React.ReactElement => {
+const renderLinksInRouter = (links = MOCK_LINKS): React.ReactElement => {
   return (
     <Router>
       <RouterLinks links={links} />
@@ -32,13 +32,13 @@ const printLinksInRouter = (links = MOCK_LINKS): React.ReactElement => {
 it('renders without crashing', () => {
   const div = document.createElement('div');
 
-  ReactDOM.render(printLinksInRouter(), div);
+  ReactDOM.render(renderLinksInRouter(), div);
 });
 
 it.each(MOCK_LINKS.map((link) => link.name))(
   'should render %s link in navigation',
   (linkText: string) => {
-    const { getByText } = render(printLinksInRouter());
+    const { getByText } = render(renderLinksInRouter());
     const link = getByText(linkText);
 
     expect(link).toBeInTheDocument();

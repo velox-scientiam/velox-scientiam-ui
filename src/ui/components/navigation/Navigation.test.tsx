@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import Navigation from './Navigation';
 
-const navInRouter = (): React.ReactElement => {
+const renderNavInRouter = (): React.ReactElement => {
   return (
     <Router>
       <Navigation />
@@ -15,5 +15,5 @@ const navInRouter = (): React.ReactElement => {
 it('renders without crashing', () => {
   const div = document.createElement('div');
 
-  ReactDOM.render(navInRouter(), div);
+  ReactDOM.render(renderNavInRouter(), div);
 });
