@@ -12,7 +12,7 @@ const SearchBar: FunctionComponent = () => {
       <Grid container alignItems="center" wrap="nowrap">
         <Box flexGrow={1}>
           <TextField
-            id="filled-basic"
+            id="search-field"
             label="Search"
             variant="outlined"
             size="small"
