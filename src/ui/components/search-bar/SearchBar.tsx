@@ -19,8 +19,8 @@ const SearchBar: FunctionComponent = () => {
             fullWidth
           />
         </Box>
-        <IconButton color="inherit" aria-label="Search" type="submit">
-          <SearchIcon color="primary" />
+        <IconButton aria-label="Search" type="submit">
+          <SearchIcon color="inherit" />
         </IconButton>
       </Grid>
     </form>
