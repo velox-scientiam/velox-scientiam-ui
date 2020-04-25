@@ -10,7 +10,7 @@ const SearchBar: FunctionComponent = () => {
   return (
     <form>
       <Grid container alignItems="center" wrap="nowrap">
-        <Box flexGrow={1}>
+        <Box flexGrow={1} marginRight={1}>
           <TextField
             id="search-field"
             label="Search"
