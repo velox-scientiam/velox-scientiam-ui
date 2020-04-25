@@ -2,15 +2,23 @@ import React, { FunctionComponent } from 'react';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-
-import NAVIGATION_LINKS from '../../global/navigation';
-import RouterLinks from '../router-links';
+import Grid from '@material-ui/core/Grid';
+import NavigationLinks from '../navigation-links';
+import SearchBar from '../search-bar';
 
 const Navigation: FunctionComponent = () => {
   return (
-    <AppBar color="primary" position="static">
+    <AppBar color="secondary" position="static">
       <Toolbar className="nav-container">
-        <RouterLinks links={NAVIGATION_LINKS}></RouterLinks>
+        <Grid container alignItems="center">
+          <Grid item md={8} xs={2}>
+            <NavigationLinks />
+          </Grid>
+
+          <Grid item md={4} xs={10}>
+            <SearchBar />
+          </Grid>
+        </Grid>
       </Toolbar>
     </AppBar>
   );
