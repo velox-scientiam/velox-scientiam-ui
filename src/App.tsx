@@ -33,7 +33,7 @@ const App = (): ReactElement => {
           <Route exact path="/login" component={Login} />
         </Switch>
 
-        <ChangeBgColor />
+        {/* <ChangeBgColor /> */}
       </Router>
     </MuiThemeProvider>
   );
