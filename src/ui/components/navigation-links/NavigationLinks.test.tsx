@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Navigation from './Navigation';
+import NavigationLinks from './NavigationLinks';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
 
-  ReactDOM.render(<Navigation />, div);
+  ReactDOM.render(<NavigationLinks />, div);
 });

@@ -1,0 +1,30 @@
+import React, { FunctionComponent } from 'react';
+
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
+
+const SearchBar: FunctionComponent = () => {
+  return (
+    <form>
+      <Grid container alignItems="center" wrap="nowrap">
+        <Box flexGrow={1} marginRight={1}>
+          <TextField
+            id="search-field"
+            label="Search"
+            variant="outlined"
+            size="small"
+            fullWidth
+          />
+        </Box>
+        <IconButton aria-label="Search" type="submit">
+          <SearchIcon color="inherit" />
+        </IconButton>
+      </Grid>
+    </form>
+  );
+};
+
+export default SearchBar;

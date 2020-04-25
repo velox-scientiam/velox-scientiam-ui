@@ -3,22 +3,21 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import blueGrey from '@material-ui/core/colors/blueGrey';
+import grey from '@material-ui/core/colors/grey';
 
-import themeColors from './ui/global/themeColors';
 import ChangeBgColor from './ui/components/post-board';
 import Navigation from './ui/components/navigation';
 import Home from './ui/views/home';
 import Signup from './ui/views/signup';
 import Login from './ui/views/login';
 
-const { black } = themeColors;
-
 // TODO: check theme colors for mui
 const theme = createMuiTheme({
   palette: {
-    primary: {
-      main: black,
-    },
+    primary: blueGrey,
+    secondary: grey,
+    type: 'dark',
   },
 });
 
