@@ -7,8 +7,12 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
 const SearchBar: FunctionComponent = () => {
+  const searchSubmitHandler = (event: React.FormEvent<HTMLElement>): void => {
+    event.preventDefault();
+  };
+
   return (
-    <form>
+    <form onSubmit={searchSubmitHandler}>
       <Grid container alignItems="center" wrap="nowrap">
         <Box flexGrow={1} marginRight={1}>
           <TextField
