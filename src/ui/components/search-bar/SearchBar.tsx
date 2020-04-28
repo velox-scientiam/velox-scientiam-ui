@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, FormEvent } from 'react';
 
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
 const SearchBar: FunctionComponent = () => {
-  const searchSubmitHandler = (event: React.FormEvent<HTMLElement>): void => {
+  const searchSubmitHandler = (event: FormEvent<HTMLElement>): void => {
     event.preventDefault();
   };
 
