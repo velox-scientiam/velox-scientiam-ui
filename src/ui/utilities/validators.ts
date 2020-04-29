@@ -60,14 +60,12 @@ export const errorHandler = (
       const error = rule.validator(inputField, userData, rule.arg);
 
       if (error) {
-        errors.push({
-          [inputField]: error,
-        });
+        errors = [...errors, { [inputField]: error }];
       }
     });
   });
 
-  return errors;
+  return [Object.assign({}, ...errors.reverse())];
 };
 
 export const SignUpFormSetting: FormProps = {
@@ -86,6 +84,7 @@ export const SignUpFormSetting: FormProps = {
     confirmPassword: [
       { validator: required },
       { validator: passwordValidator, arg: 'password' },
+      { validator: minLength, arg: 8 },
     ],
   },
 };
