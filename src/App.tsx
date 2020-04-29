@@ -6,7 +6,6 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 import grey from '@material-ui/core/colors/grey';
 
-import ChangeBgColor from './ui/components/post-board';
 import Navigation from './ui/components/navigation';
 import Home from './ui/views/home';
 import Signup from './ui/views/signup';
@@ -32,8 +31,6 @@ const App = (): ReactElement => {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
         </Switch>
-
-        {/* <ChangeBgColor /> */}
       </Router>
     </MuiThemeProvider>
   );
