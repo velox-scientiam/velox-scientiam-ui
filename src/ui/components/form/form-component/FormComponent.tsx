@@ -12,7 +12,6 @@ import {
   WithStyles,
 } from '../../../../interfaces/form/form.interface';
 import { mapLabel, errorHandler } from '../../../utilities/validators';
-// import { SignUpFormSetting } from './utilities';
 import InputComponent from '../input-component';
 import FormHeader from '../form-header';
 import ButtonComponent from '../button';
@@ -42,7 +41,8 @@ const FormComponent: FunctionComponent<
     const errors = errorHandler(userInfo, formSettings.validationRules);
 
     setErrorMessage(Object.assign({}, ...errors));
-    if (errors.length === 0) {
+
+    if (Object.keys(errors[0]).length === 0) {
       setIsFormDone(!isFormDone);
       // Send userInfo data to db
     }
