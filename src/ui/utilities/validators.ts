@@ -3,8 +3,8 @@ import {
   FormProps,
   FormValidation,
   ValidationProps,
-} from '../../interfaces/signup/signup.interface';
-import { ErrorMessage } from '../../interfaces/signup/constants';
+} from '../../interfaces/form/form.interface';
+import { ErrorMessage } from '../../interfaces/form/constants';
 
 export const mapLabel = (inputField: string): string =>
   inputField === 'username'
@@ -66,25 +66,4 @@ export const errorHandler = (
   });
 
   return [Object.assign({}, ...errors.reverse())];
-};
-
-export const SignUpFormSetting: FormProps = {
-  values: [
-    {
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    },
-  ],
-  validationRules: {
-    username: [{ validator: required }, { validator: minLength, arg: 4 }],
-    email: [{ validator: required }, { validator: isEmail }],
-    password: [{ validator: required }, { validator: minLength, arg: 8 }],
-    confirmPassword: [
-      { validator: required },
-      { validator: passwordValidator, arg: 'password' },
-      { validator: minLength, arg: 8 },
-    ],
-  },
 };

@@ -7,9 +7,9 @@ import {
 } from '@material-ui/core';
 import { withStyles, StyleRules, createStyles } from '@material-ui/core/styles';
 
-import { WithStyles } from '../../../interfaces/signup/signup.interface';
+import { WithStyles } from '../../../../interfaces/form/form.interface';
 
-import themeColors from '../../global/themeColors';
+import themeColors from '../../../global/themeColors';
 
 const styles = (): StyleRules =>
   createStyles({
