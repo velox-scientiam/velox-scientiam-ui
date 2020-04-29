@@ -48,6 +48,12 @@ export const isEmail: Validator = (email, values): string => {
     : ErrorMessage.EMAIL;
 };
 
+type ErrorsType = {
+  [key: string]: string;
+};
+/* export const isErrorEmpty = (errors: string[]): boolean =>
+  Object.keys(errors[0]) === 0; */
+
 export const errorHandler = (
   userData: FormProps,
   validatorRules: ValidationProps,

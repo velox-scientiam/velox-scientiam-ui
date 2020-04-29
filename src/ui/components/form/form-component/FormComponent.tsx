@@ -29,16 +29,16 @@ const styles = (theme: Theme): StyleRules => ({
 
 const FormComponent: FunctionComponent<
   FormProps & WithStyles<typeof styles>
-> = ({ SignUpFormSetting, classes, entryHeaderText, buttonText }) => {
-  const formSettings: FormProps = SignUpFormSetting;
-  const [userInfo, setUserInfo] = useState(formSettings.values[0]);
+> = ({ formSettings, classes, entryHeaderText, buttonText }) => {
+  const initialSettings: FormProps = formSettings;
+  const [userInfo, setUserInfo] = useState(initialSettings.values[0]);
   const [errorMessage, setErrorMessage] = useState<any>('');
   const [isFormDone, setIsFormDone] = useState<boolean>(false);
 
   const handleSignup = (event: FormEvent<HTMLElement>): void => {
     event.preventDefault();
 
-    const errors = errorHandler(userInfo, formSettings.validationRules);
+    const errors = errorHandler(userInfo, initialSettings.validationRules);
 
     setErrorMessage(Object.assign({}, ...errors));
 

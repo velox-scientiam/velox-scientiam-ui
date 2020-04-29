@@ -9,7 +9,7 @@ const Login: FunctionComponent = () => {
 
   return (
     <FormComponent
-      SignUpFormSetting={formSettings}
+      formSettings={formSettings}
       buttonText="Login"
       entryHeaderText="Login, blease!"
     />

@@ -9,7 +9,7 @@ const Signup = (): JSX.Element => {
 
   return (
     <FormComponent
-      SignUpFormSetting={formSettings}
+      formSettings={formSettings}
       buttonText="Sign up"
       entryHeaderText="Sign up, please!"
     />
