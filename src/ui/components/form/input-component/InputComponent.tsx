@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react';
+import React from 'react';
 import {
   FormControl,
   Input,
@@ -7,7 +7,8 @@ import {
 } from '@material-ui/core';
 import { withStyles, StyleRules, createStyles } from '@material-ui/core/styles';
 
-import { WithStyles } from '../../../../interfaces/form/form.interface';
+import { InputComponentProps } from '../../../../interfaces/form/form.interface';
+import { WithStyles } from '../../../../interfaces/shared/style.interface';
 
 import themeColors from '../../../global/themeColors';
 
@@ -24,10 +25,6 @@ const styles = (): StyleRules =>
       '&::after, &::before, &:hover:not(.Mui-disabled):before': {
         borderBottom: `2px solid ${themeColors.black}`,
       },
-      '&:focus': {
-        borderBottom: `2px solid -webkit-focus-ring-colo;
-        `,
-      },
     },
     inputWrapper: {
       marginBottom: 6,
@@ -39,14 +36,6 @@ const styles = (): StyleRules =>
     },
   });
 
-interface InputComponentProps extends WithStyles<typeof styles> {
-  value: string;
-  name: string;
-  label: string;
-  errorMessage: string;
-  inputHandler: ChangeEventHandler<HTMLInputElement>;
-}
-
 const InputComponent = ({
   classes,
   value,
@@ -54,7 +43,8 @@ const InputComponent = ({
   label,
   errorMessage,
   inputHandler,
-}: InputComponentProps): JSX.Element => {
+  isAutoFocused,
+}: InputComponentProps & WithStyles<typeof styles>): JSX.Element => {
   const { input, errorWrapper, labelStyle, inputWrapper } = classes;
   return (
     <FormControl
@@ -73,7 +63,7 @@ const InputComponent = ({
         autoComplete={name}
         value={value}
         onChange={inputHandler}
-        autoFocus={name === 'username' ? true : false}
+        autoFocus={isAutoFocused ? true : false}
         type={
           name === 'password' || name === 'confirmPassword'
             ? 'password'

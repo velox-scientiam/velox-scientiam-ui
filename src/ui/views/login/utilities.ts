@@ -1,7 +1,11 @@
-import { required, minLength, isEmail } from './../../utilities/validators';
+import {
+  required,
+  minLength,
+  emailValidator,
+} from './../../utilities/validators';
 import { FormProps } from '../../../interfaces/form/form.interface';
 
-export const LoginFormSetting: FormProps = {
+export const loginFormSetting: FormProps = {
   values: [
     {
       email: '',
@@ -9,7 +13,7 @@ export const LoginFormSetting: FormProps = {
     },
   ],
   validationRules: {
-    email: [{ validator: required }, { validator: isEmail }],
+    email: [{ validator: required }, { validator: emailValidator }],
     password: [{ validator: required }, { validator: minLength, arg: 8 }],
   },
 };

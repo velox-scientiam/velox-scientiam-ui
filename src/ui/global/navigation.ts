@@ -1,4 +1,4 @@
-import { NavigationLink } from '../../interfaces';
+import { NavigationLink } from '../../interfaces/navigation';
 
 const NAVIGATION_LINKS: NavigationLink[] = [
   {

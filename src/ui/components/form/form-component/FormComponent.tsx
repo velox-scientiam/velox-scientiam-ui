@@ -3,18 +3,21 @@ import React, {
   useState,
   ChangeEvent,
   FunctionComponent,
+  Fragment,
 } from 'react';
 import { Box, Theme, CssBaseline } from '@material-ui/core';
 import { withStyles, StyleRules } from '@material-ui/core/styles';
+import { generate as generateId } from 'shortid';
 
 import {
   FormProps,
-  WithStyles,
+  FormUIProps,
 } from '../../../../interfaces/form/form.interface';
+import { WithStyles } from '../../../../interfaces/shared/style.interface';
 import { mapLabel, errorHandler } from '../../../utilities/validators';
 import InputComponent from '../input-component';
-import FormHeader from '../form-header';
-import ButtonComponent from '../button';
+import TextWrapper from '../../shared/text-wrapper';
+import ButtonComponent from '../../shared/button';
 
 const styles = (theme: Theme): StyleRules => ({
   root: {
@@ -27,15 +30,27 @@ const styles = (theme: Theme): StyleRules => ({
   },
 });
 
+export interface SignUpFormFields {
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+export interface LoginFormFields {
+  email: string;
+  password: string;
+}
+
 const FormComponent: FunctionComponent<
-  FormProps & WithStyles<typeof styles>
+  FormUIProps & WithStyles<typeof styles>
 > = ({ formSettings, classes, entryHeaderText, buttonText }) => {
   const initialSettings: FormProps = formSettings;
   const [userInfo, setUserInfo] = useState(initialSettings.values[0]);
-  const [errorMessage, setErrorMessage] = useState<any>('');
+  const [errorMessage, setErrorMessage] = useState(initialSettings.values[0]);
   const [isFormDone, setIsFormDone] = useState<boolean>(false);
 
-  const handleSignup = (event: FormEvent<HTMLElement>): void => {
+  const onFormSubmit = (event: FormEvent<HTMLElement>): void => {
     event.preventDefault();
 
     const errors = errorHandler(userInfo, initialSettings.validationRules);
@@ -48,36 +63,44 @@ const FormComponent: FunctionComponent<
     }
   };
 
-  const inputHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+  const onInputValueChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setUserInfo({ ...userInfo, [event.target.id]: event.target.value });
   };
 
   return (
-    <Box className={classes.root}>
-      <CssBaseline />
-      {isFormDone ? (
-        <FormHeader headerText="Thanks!" />
-      ) : (
-        <>
-          <FormHeader headerText={entryHeaderText} />
+    <Fragment>
+      <Box className={classes.root}>
+        <CssBaseline />
+        {isFormDone ? (
+          <TextWrapper type="h2" headerText="Thanks!" />
+        ) : (
+          <Fragment>
+            <TextWrapper type="h2" headerText={entryHeaderText} />
 
-          <form onSubmit={handleSignup}>
-            {Object.keys(userInfo).map((user, index) => (
-              <InputComponent
-                key={index}
-                value={userInfo[user]}
-                inputHandler={inputHandler}
-                name={user}
-                label={mapLabel(user)}
-                errorMessage={errorMessage[user]}
+            <form onSubmit={onFormSubmit}>
+              {Object.keys(userInfo).map((inputKey, index) => (
+                <InputComponent
+                  key={`input-field-${generateId()}`}
+                  value={userInfo[inputKey]}
+                  inputHandler={onInputValueChange}
+                  name={inputKey}
+                  label={mapLabel(inputKey)}
+                  errorMessage={errorMessage[inputKey]}
+                  isAutoFocused={index === 0}
+                />
+              ))}
+
+              <ButtonComponent
+                type="submit"
+                variant="contained"
+                color="primary"
+                buttonText={buttonText}
               />
-            ))}
-
-            <ButtonComponent buttonText={buttonText} />
-          </form>
-        </>
-      )}
-    </Box>
+            </form>
+          </Fragment>
+        )}
+      </Box>
+    </Fragment>
   );
 };
 

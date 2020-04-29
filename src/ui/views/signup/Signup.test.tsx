@@ -11,7 +11,7 @@ it('renders without crashing', () => {
 
 it('should render heading', () => {
   const { getByText } = render(<Signup />);
-  const heading = getByText('Sign up, blease!');
+  const heading = getByText('Sign up, please!');
 
   expect(heading).toBeInTheDocument();
 });

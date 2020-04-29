@@ -1,15 +1,8 @@
+import TextWrapper from '../../components/shared/text-wrapper';
 import React, { FunctionComponent } from 'react';
 
 const Home: FunctionComponent = () => {
-  return (
-    <h1
-      style={{
-        textAlign: 'center',
-      }}
-    >
-      Hello Documents World!
-    </h1>
-  );
+  return <TextWrapper type="overline" headerText="Hello Documents World!" />;
 };
 
 export default Home;

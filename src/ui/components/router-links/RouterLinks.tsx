@@ -4,7 +4,7 @@ import { generate as generateId } from 'shortid';
 
 import Button from '@material-ui/core/Button';
 
-import { NavigationLink } from '../../../interfaces';
+import { NavigationLink } from '../../../interfaces/navigation';
 
 interface RouterLinksProps {
   links: NavigationLink[];

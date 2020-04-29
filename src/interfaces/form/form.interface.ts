@@ -1,9 +1,12 @@
-type ClassesType<S extends (...args: any[]) => any, T extends ReturnType<S>> = {
-  [P in keyof T]: string;
-};
+import { ChangeEventHandler } from 'react';
 
-export interface WithStyles<T extends (...args: any[]) => any> {
-  classes: ClassesType<T, ReturnType<T>>;
+export interface InputComponentProps {
+  value: string;
+  name: string;
+  label: string;
+  errorMessage: string;
+  isAutoFocused: boolean;
+  inputHandler: ChangeEventHandler<HTMLInputElement>;
 }
 
 export interface FormProps {
@@ -24,4 +27,9 @@ export interface FormValidation {
 
 export interface ValidationProps {
   [key: string]: FormValidation | FormValidation[];
+}
+
+export interface FormUIProps extends FormProps {
+  entryHeaderText: string;
+  buttonText: string;
 }

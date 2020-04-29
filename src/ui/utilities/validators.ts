@@ -30,16 +30,16 @@ export const minLength: Validator = (
     `
     : '';
 
-export const passwordValidator: Validator = (
+export const passwordMatchValidator: Validator = (
   inputField,
   values,
-  _inputeField: string,
+  inputFieldToMatch: string,
 ): string =>
-  values[inputField] !== values[_inputeField]
+  values[inputField] !== values[inputFieldToMatch]
     ? ErrorMessage.PASSWORD_MATCH
     : '';
 
-export const isEmail: Validator = (email, values): string => {
+export const emailValidator: Validator = (email, values): string => {
   // eslint-disable-next-line
   const emailRegExP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -47,12 +47,6 @@ export const isEmail: Validator = (email, values): string => {
     ? ''
     : ErrorMessage.EMAIL;
 };
-
-type ErrorsType = {
-  [key: string]: string;
-};
-/* export const isErrorEmpty = (errors: string[]): boolean =>
-  Object.keys(errors[0]) === 0; */
 
 export const errorHandler = (
   userData: FormProps,

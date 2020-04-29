@@ -2,7 +2,11 @@ import React, { FunctionComponent } from 'react';
 import { Button, Theme } from '@material-ui/core';
 import { withStyles, StyleRules } from '@material-ui/core/styles';
 
-import { WithStyles } from '../../../../interfaces/form/form.interface';
+import {
+  WithStyles,
+  ButtonProps,
+} from '../../../../interfaces/shared/style.interface';
+
 import themeColors from '../../../global/themeColors';
 
 const styles = (theme: Theme): StyleRules => ({
@@ -23,20 +27,15 @@ const styles = (theme: Theme): StyleRules => ({
   },
 });
 
-interface ButtonProps extends WithStyles<typeof styles> {
-  buttonText: string;
-}
-
-const ButtonComponent: FunctionComponent<ButtonProps> = ({
-  classes,
-  buttonText,
-}): JSX.Element => {
+const ButtonComponent: FunctionComponent<
+  ButtonProps & WithStyles<typeof styles>
+> = ({ classes, buttonText, variant, type, color }): JSX.Element => {
   return (
     <Button
       className={classes.button}
-      type="submit"
-      variant="contained"
-      color="primary"
+      type={type}
+      variant={variant}
+      color={color}
       fullWidth
     >
       {buttonText}
