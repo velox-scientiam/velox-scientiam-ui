@@ -33,3 +33,15 @@ export interface FormUIProps extends FormProps {
   entryHeaderText: string;
   buttonText: string;
 }
+
+export interface SignUpFormFields {
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+export interface LoginFormFields {
+  email: string;
+  password: string;
+}
