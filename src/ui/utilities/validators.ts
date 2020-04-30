@@ -3,6 +3,7 @@ import {
   FormProps,
   FormValidation,
   ValidationProps,
+  FormValues,
 } from '../../interfaces/form/form.interface';
 import { ErrorMessage } from '../../interfaces/form/constants';
 
@@ -26,8 +27,7 @@ export const minLength: Validator = (
   length: number,
 ): string =>
   values[inputField].length < length
-    ? `${ErrorMessage.MAX_LENGTH} ${length} 
-    `
+    ? `${ErrorMessage.MIN_LENGTH} ${length}`
     : '';
 
 export const passwordMatchValidator: Validator = (
@@ -51,7 +51,7 @@ export const emailValidator: Validator = (email, values): string => {
 export const errorHandler = (
   userData: FormProps,
   validatorRules: ValidationProps,
-  errors: any = [],
+  errors: FormValues[] = [],
 ): string[] => {
   Object.keys(userData).forEach((inputField) => {
     const rules = validatorRules[inputField];

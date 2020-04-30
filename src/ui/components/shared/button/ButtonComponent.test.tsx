@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import ButtonComponent from './ButtonComponent';
 
@@ -11,10 +11,9 @@ it('renders without crashing', () => {
   ReactDOM.render(<ButtonComponent buttonText={buttonText} />, div);
 });
 
-it('should render text', () => {
-  const buttonText = 'Sign up';
-  const { getByText } = render(<ButtonComponent buttonText={buttonText} />);
-  const heading = getByText(buttonText);
+it('button should have text', () => {
+  const { container } = render(<ButtonComponent buttonText="Sign up" />);
+  const textElement = container.querySelector('.MuiButton-label');
 
-  expect(heading).toBeInTheDocument();
+  expect(textElement).not.toBeEmpty();
 });

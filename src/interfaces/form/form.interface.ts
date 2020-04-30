@@ -9,6 +9,13 @@ export interface InputComponentProps {
   inputHandler: ChangeEventHandler<HTMLInputElement>;
 }
 
+export interface FormValues {
+  [key: string]: string;
+}
+/* export interface FormDefaultProps {
+  defaultValues: FormValues;
+} */
+
 export interface FormProps {
   [key: string]: any;
   validationRules: ValidationProps;
@@ -44,4 +51,11 @@ export interface SignUpFormFields {
 export interface LoginFormFields {
   email: string;
   password: string;
+}
+
+export interface FormState<T> {
+  values: T;
+}
+export interface FormErrors<T> {
+  values: T;
 }

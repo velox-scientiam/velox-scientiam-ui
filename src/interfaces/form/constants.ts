@@ -1,6 +1,6 @@
 export enum ErrorMessage {
   REQUIRED = 'is required.',
-  MAX_LENGTH = 'Length has to be at least',
+  MIN_LENGTH = 'Length has to be at least',
   PASSWORD_MATCH = 'Passwords has to match.',
-  EMAIL = `Email format doesn't seem to be right, bruv!`,
+  EMAIL = `Email format needs to be corrected`,
 }

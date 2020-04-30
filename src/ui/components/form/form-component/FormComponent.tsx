@@ -30,18 +30,6 @@ const styles = (theme: Theme): StyleRules => ({
   },
 });
 
-export interface SignUpFormFields {
-  username: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
-
-export interface LoginFormFields {
-  email: string;
-  password: string;
-}
-
 const FormComponent: FunctionComponent<
   FormUIProps & WithStyles<typeof styles>
 > = ({ formSettings, classes, entryHeaderText, buttonText }) => {
@@ -77,7 +65,7 @@ const FormComponent: FunctionComponent<
           <Fragment>
             <TextWrapper type="h2" headerText={entryHeaderText} />
 
-            <form onSubmit={onFormSubmit}>
+            <form onSubmit={onFormSubmit} data-testid="form">
               {Object.keys(userInfo).map((inputKey, index) => (
                 <InputComponent
                   key={`input-field-${generateId()}`}
