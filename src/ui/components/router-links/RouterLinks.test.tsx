@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 
 import RouterLinks from './RouterLinks';
-import { NavigationLink } from '../../../interfaces';
+import { NavigationLink } from '../../../interfaces/navigation/';
 
 const MOCK_LINKS: NavigationLink[] = [
   {

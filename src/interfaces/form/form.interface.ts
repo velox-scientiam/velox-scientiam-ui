@@ -34,31 +34,14 @@ export interface FormUIProps extends FormProps {
   buttonText: string;
 }
 
-export interface SignUpFormFields {
-  username: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+export type FormTestParams = (
+  testTitle: string,
+  formSetting: FormProps,
+  inputLength: number,
+) => void;
 
-export interface LoginFormFields {
-  email: string;
-  password: string;
-}
+export type FormAttributes = (element: HTMLInputElement, value: string) => void;
 
-export interface FormValues {
-  [key: string]: string[];
-}
 export interface FormErrors {
   [key: string]: string;
-}
-
-export interface FormState {
-  values: FormValues;
-  errors: FormErrors;
-}
-
-export interface SubmitFormResult {
-  success: boolean;
-  errors?: FormErrors;
 }

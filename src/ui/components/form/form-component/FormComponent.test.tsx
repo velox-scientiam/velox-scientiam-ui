@@ -4,7 +4,10 @@ import { render, fireEvent, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import FormComponent from './FormComponent';
-import { FormProps } from '../../../../interfaces/form/form.interface';
+import {
+  FormTestParams,
+  FormAttributes,
+} from '../../../../interfaces/form/form.interface';
 import { signUpFormSetting } from '../../../views/signup/utilities';
 import { loginFormSetting } from '../../../views/login/utilities';
 
@@ -23,14 +26,20 @@ it('renders without crashing', () => {
   );
 });
 
-const formsTestHandler = (
-  testTitle: string,
-  formSetting: FormProps,
-  inputLength: number,
-): void => {
+const setAndCheckAttributes: FormAttributes = (element, value) => {
+  expect(element).not.toBeNull();
+  userEvent.type(element, value);
+  expect(element).toHaveAttribute('value', value);
+};
+
+const formsTestHandler: FormTestParams = (
+  testTitle,
+  formSetting,
+  inputLength,
+) => {
   describe(`${testTitle} form`, (): void => {
     it('When submit without filling in fields, it should display errors', () => {
-      const submitHandler = jest.fn();
+      const submitHandler = jest.fn((e) => e.preventDefault());
       const { getAllByText, container } = render(
         <FormComponent
           onSubmit={submitHandler}
@@ -70,14 +79,10 @@ describe('Login form submit', () => {
     const passwordValue = 'password';
 
     const email: HTMLInputElement = container.querySelector('#email');
-    expect(email).not.toBeNull();
-    userEvent.type(email, emailValue);
-    expect(email).toHaveAttribute('value', emailValue);
-
     const password: HTMLInputElement = container.querySelector('#password');
-    expect(email).not.toBeNull();
-    userEvent.type(password, passwordValue);
-    expect(password).toHaveAttribute('value', passwordValue);
+
+    setAndCheckAttributes(email, emailValue);
+    setAndCheckAttributes(password, passwordValue);
 
     fireEvent.click(getByText('Submit').closest('button'));
 
@@ -93,7 +98,7 @@ describe('Signup form submit', () => {
         onSubmit={submitHandler}
         formSettings={signUpFormSetting}
         buttonText="Submit"
-        entryHeaderText="Login, please!"
+        entryHeaderText="Signup, please!"
       />,
     );
 
@@ -103,26 +108,16 @@ describe('Signup form submit', () => {
     const confirmPasswordValue = 'password';
 
     const username: HTMLInputElement = container.querySelector('#username');
-    expect(username).not.toBeNull();
-    userEvent.type(username, usenameValue);
-    expect(username).toHaveAttribute('value', usenameValue);
-
     const password: HTMLInputElement = container.querySelector('#password');
-    expect(password).not.toBeNull();
-    userEvent.type(password, passwordValue);
-    expect(password).toHaveAttribute('value', passwordValue);
-
     const email: HTMLInputElement = container.querySelector('#email');
-    expect(email).not.toBeNull();
-    userEvent.type(email, emailValue);
-    expect(email).toHaveAttribute('value', emailValue);
-
     const confirmPassword: HTMLInputElement = container.querySelector(
       '#confirmPassword',
     );
-    expect(confirmPassword).not.toBeNull();
-    userEvent.type(confirmPassword, confirmPasswordValue);
-    expect(confirmPassword).toHaveAttribute('value', confirmPasswordValue);
+
+    setAndCheckAttributes(username, usenameValue);
+    setAndCheckAttributes(password, passwordValue);
+    setAndCheckAttributes(email, emailValue);
+    setAndCheckAttributes(confirmPassword, confirmPasswordValue);
 
     fireEvent.click(getByText('Submit').closest('button'));
 
