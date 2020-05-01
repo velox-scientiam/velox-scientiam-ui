@@ -4,9 +4,12 @@ import {
   emailValidator,
   passwordMatchValidator,
 } from './../../utilities/validators';
-import { FormProps } from '../../../interfaces/form/form.interface';
+import {
+  FormProps,
+  SignupFormFields,
+} from '../../../interfaces/form/form.interface';
 
-export const signUpFormSetting: FormProps = {
+export const signUpFormSetting: FormProps<SignupFormFields[]> = {
   values: [
     {
       username: '',

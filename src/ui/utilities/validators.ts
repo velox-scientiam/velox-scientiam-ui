@@ -1,6 +1,7 @@
 import {
   Validator,
-  FormProps,
+  FormFields,
+  FormFieldName,
   FormValidation,
   ValidationProps,
   FormErrors,
@@ -15,9 +16,9 @@ export const mapLabel = (inputField: string): string =>
     : inputField;
 
 export const required: Validator = (inputField, values): string =>
-  values[inputField] === undefined ||
-  values[inputField] === null ||
-  values[inputField] === ''
+  values[inputField as FormFieldName] === undefined ||
+  values[inputField as FormFieldName] === null ||
+  values[inputField as FormFieldName] === ''
     ? ErrorMessage.REQUIRED
     : '';
 
@@ -26,7 +27,7 @@ export const minLength: Validator = (
   values,
   length: number,
 ): string =>
-  values[inputField].length < length
+  values[inputField as FormFieldName].length < length
     ? `${ErrorMessage.MIN_LENGTH} ${length}`
     : '';
 
@@ -35,7 +36,8 @@ export const passwordMatchValidator: Validator = (
   values,
   inputFieldToMatch: string,
 ): string =>
-  values[inputField] !== values[inputFieldToMatch]
+  values[inputField as FormFieldName] !==
+  values[inputFieldToMatch as FormFieldName]
     ? ErrorMessage.PASSWORD_MATCH
     : '';
 
@@ -43,13 +45,14 @@ export const emailValidator: Validator = (email, values): string => {
   // eslint-disable-next-line
   const emailRegExP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  return values[email] && !!values[email].match(emailRegExP)
+  return values[email as FormFieldName] &&
+    !!values[email as FormFieldName].match(emailRegExP)
     ? ''
     : ErrorMessage.EMAIL;
 };
 
 export const errorHandler = (
-  userData: FormProps,
+  userData: FormFields,
   validatorRules: ValidationProps,
   errors: FormErrors[] = [],
 ): string[] => {

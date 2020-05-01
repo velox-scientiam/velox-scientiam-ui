@@ -1,11 +1,14 @@
 import React, { FunctionComponent } from 'react';
 
-import { FormProps } from '../../../interfaces/form/form.interface';
+import {
+  FormProps,
+  LoginFormFields,
+} from '../../../interfaces/form/form.interface';
 import FormComponent from '../../components/form/form-component';
 import { loginFormSetting } from './utilities';
 
 const Login: FunctionComponent = () => {
-  const formSettings: FormProps = loginFormSetting;
+  const formSettings: FormProps<LoginFormFields[]> = loginFormSetting;
 
   return (
     <FormComponent
