@@ -56,8 +56,6 @@ export type FormTestParams = (
   inputLength: number,
 ) => void;
 
-export type FormAttributes = (element: HTMLInputElement, value: string) => void;
-
 export interface FormErrors {
   [key: string]: string;
 }

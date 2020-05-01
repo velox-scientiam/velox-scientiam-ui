@@ -4,10 +4,7 @@ import { render, fireEvent, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import FormComponent from './FormComponent';
-import {
-  FormTestParams,
-  FormAttributes,
-} from '../../../../interfaces/form/form.interface';
+import { FormTestParams } from '../../../../interfaces/form/form.interface';
 import { signUpFormSetting } from '../../../views/signup/utilities';
 import { loginFormSetting } from '../../../views/login/utilities';
 
@@ -26,7 +23,10 @@ it('renders without crashing', () => {
   );
 });
 
-const setAndCheckAttributes: FormAttributes = (element, value) => {
+const setAndCheckAttributes = (
+  element: HTMLInputElement,
+  value: string,
+): void => {
   expect(element).not.toBeNull();
   userEvent.type(element, value);
   expect(element).toHaveAttribute('value', value);
