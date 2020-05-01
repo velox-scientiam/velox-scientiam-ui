@@ -29,10 +29,10 @@ describe('Map input field label', () => {
 });
 
 describe('Required', () => {
-  it(`When required called with title being an empty string, an error should be User name ${ErrorMessage.REQUIRED}`, () => {
+  it(`When required called with title being an empty string, an error should be '${ErrorMessage.REQUIRED} 6'`, () => {
     const result: string = required('username', formSetting.values);
 
-    expect(result).toBe(`User name ${ErrorMessage.REQUIRED}`);
+    expect(result).toBe(`${ErrorMessage.REQUIRED}`);
   });
 });
 
@@ -53,7 +53,7 @@ describe('Email validator', () => {
 });
 
 describe('Password match validator', () => {
-  it(`When email input is incorrect, an error should be ${ErrorMessage.PASSWORD_MATCH}`, () => {
+  it(`When password and confirm password inputs don't match, an error should be ${ErrorMessage.PASSWORD_MATCH}`, () => {
     const result = passwordMatchValidator(
       'confirmPassword',
       formSetting.values[0],

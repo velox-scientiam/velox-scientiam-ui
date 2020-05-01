@@ -3,7 +3,7 @@ import {
   FormProps,
   FormValidation,
   ValidationProps,
-  FormValues,
+  FormErrors,
 } from '../../interfaces/form/form.interface';
 import { ErrorMessage } from '../../interfaces/form/constants';
 
@@ -18,7 +18,7 @@ export const required: Validator = (inputField, values): string =>
   values[inputField] === undefined ||
   values[inputField] === null ||
   values[inputField] === ''
-    ? `${mapLabel(inputField)} ${ErrorMessage.REQUIRED}`
+    ? ErrorMessage.REQUIRED
     : '';
 
 export const minLength: Validator = (
@@ -51,7 +51,7 @@ export const emailValidator: Validator = (email, values): string => {
 export const errorHandler = (
   userData: FormProps,
   validatorRules: ValidationProps,
-  errors: FormValues[] = [],
+  errors: FormErrors[] = [],
 ): string[] => {
   Object.keys(userData).forEach((inputField) => {
     const rules = validatorRules[inputField];

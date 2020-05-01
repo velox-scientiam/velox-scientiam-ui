@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import { Box, Theme, CssBaseline } from '@material-ui/core';
 import { withStyles, StyleRules } from '@material-ui/core/styles';
-import { generate as generateId } from 'shortid';
 
 import {
   FormProps,
@@ -43,6 +42,8 @@ const FormComponent: FunctionComponent<
 
     const errors = errorHandler(userInfo, initialSettings.validationRules);
 
+    console.log(errors);
+
     setErrorMessage(Object.assign({}, ...errors));
 
     if (Object.keys(errors[0]).length === 0) {
@@ -65,10 +66,10 @@ const FormComponent: FunctionComponent<
           <Fragment>
             <TextWrapper type="h2" headerText={entryHeaderText} />
 
-            <form onSubmit={onFormSubmit} data-testid="form">
+            <form onSubmit={onFormSubmit}>
               {Object.keys(userInfo).map((inputKey, index) => (
                 <InputComponent
-                  key={`input-field-${generateId()}`}
+                  key={`input-field-${inputKey}}`}
                   value={userInfo[inputKey]}
                   inputHandler={onInputValueChange}
                   name={inputKey}
