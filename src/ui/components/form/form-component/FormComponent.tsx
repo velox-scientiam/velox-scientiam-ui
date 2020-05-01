@@ -11,7 +11,6 @@ import { withStyles, StyleRules } from '@material-ui/core/styles';
 import {
   FormProps,
   FormFields,
-  FormFieldName,
 } from '../../../../interfaces/form/form.interface';
 import { WithStyles } from '../../../../interfaces/shared/style.interface';
 import { mapLabel, errorHandler } from '../../../utilities/validators';
@@ -80,11 +79,11 @@ const FormComponent: FunctionComponent<FormComponentProps> = ({
               {Object.keys(userInfo).map((inputKey, index) => (
                 <InputComponent
                   key={`input-field-${inputKey}}`}
-                  value={userInfo[inputKey as FormFieldName]}
+                  value={userInfo[inputKey as keyof typeof userInfo]}
                   inputHandler={onInputValueChange}
                   name={inputKey}
                   label={mapLabel(inputKey)}
-                  errorMessage={errorMessage[inputKey as FormFieldName]}
+                  errorMessage={errorMessage[inputKey as keyof typeof userInfo]}
                   isAutoFocused={index === 0}
                 />
               ))}

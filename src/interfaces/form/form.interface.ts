@@ -20,13 +20,7 @@ export interface SignupFormFields {
   confirmPassword: string;
 }
 
-export type SignupFormFieldName = keyof SignupFormFields;
-
-export type LoginFormFieldName = keyof LoginFormFields;
-
 export type FormFields = SignupFormFields | LoginFormFields;
-
-export type FormFieldName = keyof FormFields;
 
 export interface FormProps<T> {
   values: T;
