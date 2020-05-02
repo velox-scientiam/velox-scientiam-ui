@@ -1,15 +1,14 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 
-const Signup: FunctionComponent = () => {
-  return (
-    <h1
-      style={{
-        textAlign: 'center',
-      }}
-    >
-      Sigun up here
-    </h1>
-  );
-};
+import FormComponent from '../../components/form/form-component';
+import { signUpFormSetting } from './utilities';
+
+const Signup = (): JSX.Element => (
+  <FormComponent
+    formSettings={signUpFormSetting}
+    buttonText="Sign up"
+    entryHeaderText="Sign up, please!"
+  />
+);
 
 export default Signup;

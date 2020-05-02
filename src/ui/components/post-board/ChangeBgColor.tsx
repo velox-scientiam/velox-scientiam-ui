@@ -5,7 +5,7 @@ import ButtonWrapper from './ChangeBgColor.style';
 import themeColors from '../../global/themeColors';
 
 const ChangeBgColor: FunctionComponent = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const { white, black } = themeColors;
 

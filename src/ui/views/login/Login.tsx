@@ -1,15 +1,14 @@
 import React, { FunctionComponent } from 'react';
 
-const Login: FunctionComponent = () => {
-  return (
-    <h1
-      style={{
-        textAlign: 'center',
-      }}
-    >
-      Log in here
-    </h1>
-  );
-};
+import FormComponent from '../../components/form/form-component';
+import { loginFormSetting } from './utilities';
+
+const Login: FunctionComponent = () => (
+  <FormComponent
+    formSettings={loginFormSetting}
+    buttonText="Login"
+    entryHeaderText="Login, please!"
+  />
+);
 
 export default Login;
