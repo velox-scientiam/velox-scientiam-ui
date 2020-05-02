@@ -13,7 +13,7 @@ export interface ButtonProps {
   color: 'inherit' | 'default' | 'primary' | 'secondary';
 }
 
-export interface FormHeaderProps {
+export interface TypographyProps {
   headerText: string;
   type:
     | 'inherit'

@@ -41,17 +41,14 @@ const FormComponent: FunctionComponent<FormComponentProps> = ({
   entryHeaderText,
   buttonText,
 }) => {
-  const initialSettings: FormProps<FormFields[]> = formSettings;
-  const [userInfo, setUserInfo] = useState(initialSettings.values[0]);
-  const [errorMessage, setErrorMessage] = useState(initialSettings.values[0]);
+  const [userInfo, setUserInfo] = useState(formSettings.values[0]);
+  const [errorMessage, setErrorMessage] = useState(formSettings.values[0]);
   const [isFormDone, setIsFormDone] = useState<boolean>(false);
 
   const onFormSubmit = (event: FormEvent<HTMLElement>): void => {
     event.preventDefault();
 
-    const errors = errorHandler(userInfo, initialSettings.validationRules);
-
-    console.log(errors);
+    const errors = errorHandler(userInfo, formSettings.validationRules);
 
     setErrorMessage(Object.assign({}, ...errors));
 

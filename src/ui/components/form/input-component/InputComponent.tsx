@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import {
   FormControl,
   Input,
@@ -36,7 +36,11 @@ const styles = (): StyleRules =>
     },
   });
 
-const InputComponent = ({
+interface StyledInputProps
+  extends InputComponentProps,
+    WithStyles<typeof styles> {}
+
+const InputComponent: FunctionComponent<StyledInputProps> = ({
   classes,
   value,
   name,
@@ -44,7 +48,7 @@ const InputComponent = ({
   errorMessage,
   inputHandler,
   isAutoFocused,
-}: InputComponentProps & WithStyles<typeof styles>): JSX.Element => {
+}) => {
   const { input, errorWrapper, labelStyle, inputWrapper } = classes;
   return (
     <FormControl

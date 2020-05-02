@@ -6,7 +6,6 @@ import {
   WithStyles,
   ButtonProps,
 } from '../../../../interfaces/shared/style.interface';
-
 import themeColors from '../../../global/themeColors';
 
 const styles = (theme: Theme): StyleRules => ({
@@ -27,9 +26,15 @@ const styles = (theme: Theme): StyleRules => ({
   },
 });
 
-const ButtonComponent: FunctionComponent<
-  ButtonProps & WithStyles<typeof styles>
-> = ({ classes, buttonText, variant, type, color }): JSX.Element => {
+interface ButtonElementProps extends ButtonProps, WithStyles<typeof styles> {}
+
+const ButtonComponent: FunctionComponent<ButtonElementProps> = ({
+  classes,
+  buttonText,
+  variant,
+  type,
+  color,
+}): JSX.Element => {
   return (
     <Button
       className={classes.button}
