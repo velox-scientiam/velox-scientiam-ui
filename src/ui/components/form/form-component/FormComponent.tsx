@@ -10,7 +10,7 @@ import { withStyles, StyleRules } from '@material-ui/core/styles';
 
 import {
   FormProps,
-  FormUIProps,
+  FormFields,
 } from '../../../../interfaces/form/form.interface';
 import { WithStyles } from '../../../../interfaces/shared/style.interface';
 import { mapLabel, errorHandler } from '../../../utilities/validators';
@@ -29,10 +29,19 @@ const styles = (theme: Theme): StyleRules => ({
   },
 });
 
-const FormComponent: FunctionComponent<
-  FormUIProps & WithStyles<typeof styles>
-> = ({ formSettings, classes, entryHeaderText, buttonText }) => {
-  const initialSettings: FormProps = formSettings;
+interface FormComponentProps extends WithStyles<typeof styles> {
+  entryHeaderText: string;
+  buttonText: string;
+  formSettings: FormProps<FormFields[]>;
+}
+
+const FormComponent: FunctionComponent<FormComponentProps> = ({
+  formSettings,
+  classes,
+  entryHeaderText,
+  buttonText,
+}) => {
+  const initialSettings: FormProps<FormFields[]> = formSettings;
   const [userInfo, setUserInfo] = useState(initialSettings.values[0]);
   const [errorMessage, setErrorMessage] = useState(initialSettings.values[0]);
   const [isFormDone, setIsFormDone] = useState<boolean>(false);
@@ -70,11 +79,11 @@ const FormComponent: FunctionComponent<
               {Object.keys(userInfo).map((inputKey, index) => (
                 <InputComponent
                   key={`input-field-${inputKey}}`}
-                  value={userInfo[inputKey]}
+                  value={userInfo[inputKey as keyof typeof userInfo]}
                   inputHandler={onInputValueChange}
                   name={inputKey}
                   label={mapLabel(inputKey)}
-                  errorMessage={errorMessage[inputKey]}
+                  errorMessage={errorMessage[inputKey as keyof typeof userInfo]}
                   isAutoFocused={index === 0}
                 />
               ))}

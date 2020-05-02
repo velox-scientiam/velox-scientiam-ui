@@ -3,9 +3,12 @@ import {
   minLength,
   emailValidator,
 } from './../../utilities/validators';
-import { FormProps } from '../../../interfaces/form/form.interface';
+import {
+  FormProps,
+  LoginFormFields,
+} from '../../../interfaces/form/form.interface';
 
-export const loginFormSetting: FormProps = {
+export const loginFormSetting: FormProps<LoginFormFields[]> = {
   values: [
     {
       email: '',

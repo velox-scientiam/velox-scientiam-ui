@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { FormProps } from '../../../interfaces/form/form.interface';
+import {
+  FormProps,
+  SignupFormFields,
+} from '../../../interfaces/form/form.interface';
 import FormComponent from '../../components/form/form-component';
 import { signUpFormSetting } from './utilities';
 
 const Signup = (): JSX.Element => {
-  const formSettings: FormProps = signUpFormSetting;
+  const formSettings: FormProps<SignupFormFields[]> = signUpFormSetting;
 
   return (
     <FormComponent
