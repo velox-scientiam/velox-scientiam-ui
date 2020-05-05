@@ -1,0 +1,26 @@
+name: velox-scientiam-ui-CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs: 
+  build:
+    name: Install, build and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install deps
+        run: yarn
+
+      - name: lint
+        run: yarn lint
+
+      - name: build
+        run: yarn build
+      
+      - name: test
+        run: yarn test:run
