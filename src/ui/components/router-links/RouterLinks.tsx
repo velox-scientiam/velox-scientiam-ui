@@ -11,21 +11,28 @@ interface RouterLinksProps {
   links: NavigationLink[];
 }
 
+const styles = {
+  paddingLeft: '15px',
+  paddingRight: '15px',
+  borderRadius: 0,
+};
+
 const RouterLinks: FunctionComponent<RouterLinksProps> = ({ links }) => {
   return (
     <Fragment>
       {links.map(({ name, target }) => {
         return (
           <Button
-            color="inherit"
-            key={'router-link-' + generateId()}
-            component={Link}
             exact
+            component={Link}
+            to={target}
+            color="inherit"
             activeStyle={{
               color: themeColors.black,
               backgroundColor: themeColors.white,
             }}
-            to={target}
+            key={'router-link-' + generateId()}
+            style={styles}
           >
             {name}
           </Button>

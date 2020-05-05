@@ -1,7 +1,7 @@
 import React, { FunctionComponent, Fragment, useState } from 'react';
 import { Hidden, Drawer, List, IconButton } from '@material-ui/core';
-import { Close } from '@material-ui/icons';
-import MenuIcon from '@material-ui/icons/Menu';
+import { Close as CloseIcon, Menu as MenuIcon } from '@material-ui/icons';
+
 import { withStyles, StyleRules } from '@material-ui/core/styles';
 
 import NAVIGATION_LINKS from '../../global/navigation';
@@ -59,7 +59,7 @@ const Navigation: FunctionComponent<NavProps> = ({ classes }) => {
               onClick={navToggleHandler}
               className={classes.iconButton}
             >
-              <Close />
+              <CloseIcon />
             </IconButton>
             <List className={classes.navLinksWrapper}>
               <RouterLinks links={NAVIGATION_LINKS}></RouterLinks>
