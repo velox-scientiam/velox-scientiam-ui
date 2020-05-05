@@ -1,5 +1,5 @@
 import React, { FunctionComponent, Fragment, useState } from 'react';
-import { Hidden, Drawer, List, IconButton } from '@material-ui/core';
+import { Hidden, Drawer, List, IconButton, Theme } from '@material-ui/core';
 import { Close as CloseIcon, Menu as MenuIcon } from '@material-ui/icons';
 
 import { withStyles, StyleRules } from '@material-ui/core/styles';
@@ -8,7 +8,7 @@ import NAVIGATION_LINKS from '../../global/navigation';
 import RouterLinks from '../router-links';
 import { WithStyles } from '../../../interfaces/shared/style.interface';
 
-const styles = (): StyleRules => ({
+const styles = (theme: Theme): StyleRules => ({
   menuIcon: {
     cursor: 'pointer',
   },
@@ -24,6 +24,11 @@ const styles = (): StyleRules => ({
       justifyContent: 'flex-start',
       borderRadius: 0,
       paddingLeft: '15px',
+    },
+  },
+  wrapper: {
+    '& .MuiPaper-root': {
+      backgroundColor: theme.palette.secondary.main,
     },
   },
 });
@@ -45,6 +50,7 @@ const Navigation: FunctionComponent<NavProps> = ({ classes }) => {
       <Hidden mdUp>
         <MenuIcon
           color="primary"
+          fontSize="large"
           onClick={navToggleHandler}
           className={classes.menuIcon}
         />
@@ -54,12 +60,13 @@ const Navigation: FunctionComponent<NavProps> = ({ classes }) => {
             anchor="left"
             open={state}
             onClose={navToggleHandler}
+            className={classes.wrapper}
           >
             <IconButton
               onClick={navToggleHandler}
               className={classes.iconButton}
             >
-              <CloseIcon />
+              <CloseIcon fontSize="large" />
             </IconButton>
             <List className={classes.navLinksWrapper}>
               <RouterLinks links={NAVIGATION_LINKS}></RouterLinks>

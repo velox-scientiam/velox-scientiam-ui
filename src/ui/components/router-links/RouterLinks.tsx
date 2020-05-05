@@ -5,17 +5,9 @@ import { generate as generateId } from 'shortid';
 import Button from '@material-ui/core/Button';
 
 import { NavigationLink } from '../../../interfaces/navigation';
-import themeColors from '../../global/themeColors';
-
 interface RouterLinksProps {
   links: NavigationLink[];
 }
-
-const styles = {
-  paddingLeft: '15px',
-  paddingRight: '15px',
-  borderRadius: 0,
-};
 
 const RouterLinks: FunctionComponent<RouterLinksProps> = ({ links }) => {
   return (
@@ -28,11 +20,9 @@ const RouterLinks: FunctionComponent<RouterLinksProps> = ({ links }) => {
             to={target}
             color="inherit"
             activeStyle={{
-              color: themeColors.black,
-              backgroundColor: themeColors.white,
+              textDecoration: 'underline',
             }}
             key={'router-link-' + generateId()}
-            style={styles}
           >
             {name}
           </Button>

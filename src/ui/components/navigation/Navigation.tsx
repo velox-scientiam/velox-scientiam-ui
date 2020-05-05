@@ -11,11 +11,11 @@ const Navigation: FunctionComponent = () => {
     <AppBar color="secondary" position="static">
       <Toolbar className="nav-container">
         <Grid container alignItems="center">
-          <Grid item md={8} xs={2}>
+          <Grid item md={8} xs={6}>
             <NavigationLinks />
           </Grid>
 
-          <Grid item md={4} xs={10}>
+          <Grid item md={4} xs={6}>
             <SearchBar />
           </Grid>
         </Grid>
