@@ -1,10 +1,11 @@
 import React, { FunctionComponent, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink as Link } from 'react-router-dom';
 import { generate as generateId } from 'shortid';
 
 import Button from '@material-ui/core/Button';
 
 import { NavigationLink } from '../../../interfaces/navigation';
+import themeColors from '../../global/themeColors';
 
 interface RouterLinksProps {
   links: NavigationLink[];
@@ -13,16 +14,23 @@ interface RouterLinksProps {
 const RouterLinks: FunctionComponent<RouterLinksProps> = ({ links }) => {
   return (
     <Fragment>
-      {links.map(({ name, target }) => (
-        <Button
-          color="inherit"
-          key={'router-link-' + generateId()}
-          component={Link}
-          to={target}
-        >
-          {name}
-        </Button>
-      ))}
+      {links.map(({ name, target }) => {
+        return (
+          <Button
+            color="inherit"
+            key={'router-link-' + generateId()}
+            component={Link}
+            exact
+            activeStyle={{
+              color: themeColors.black,
+              backgroundColor: themeColors.white,
+            }}
+            to={target}
+          >
+            {name}
+          </Button>
+        );
+      })}
     </Fragment>
   );
 };

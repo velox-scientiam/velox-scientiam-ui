@@ -1,12 +1,12 @@
-import React, { StrictMode } from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import GlobalStyle from './ui/global/GlobalStyle';
 
 ReactDOM.render(
-  <StrictMode>
+  <Fragment>
     <App />
     <GlobalStyle />
-  </StrictMode>,
+  </Fragment>,
   document.getElementById('root'),
 );
